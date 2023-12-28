@@ -1,0 +1,25 @@
+### [findAll] Retorna todos os registros de empresas ###
+GET http://localhost:3333/v1/companies HTTP/1.1
+User-Agent: rest-client
+
+### [findOne] Retorna uma empresa em específico ###
+GET http://localhost:3333/v1/companies/1 HTTP/1.1
+User-Agent: rest-client
+
+### [create] Adiciona uma nova empresa na base de dados ###
+POST http://localhost:3333/v1/companies HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+
+{
+  "name": "Nexus Corporation",
+  "description": "TI Engineering",
+}
+
+### [update] Atualiza as informações de uma empresa já existente ###
+PATCH http://localhost:3333/v1/companies/1 HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+
+### [destroy] Deleta da base de dados uma empresa previamente cadastrado ###
+DELETE http://localhost:3333/v1/companies/1 HTTP/1.1

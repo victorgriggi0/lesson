@@ -1,17 +1,17 @@
 // Importações de Bibliotecas e Frameworks
-import * as React from "react";
-import { Link } from "react-router-dom";
+import { Logout, Person } from "@mui/icons-material";
 import {
   Box,
-  Menu,
-  MenuItem,
-  ListItemIcon,
   Divider,
   IconButton,
-  Tooltip,
+  ListItemIcon,
   ListItemText,
+  Menu,
+  MenuItem,
+  Tooltip,
 } from "@mui/material";
-import { Logout, Person } from "@mui/icons-material";
+import * as React from "react";
+import { Link } from "react-router-dom";
 
 export function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);

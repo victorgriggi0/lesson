@@ -1,69 +1,69 @@
 // Importações de Bibliotecas e Frameworks
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import {
-  CssBaseline,
-  Drawer as MuiDrawer,
-  Box,
-  AppBar as MuiAppBar,
-  Toolbar,
-  List,
-  Divider,
-  IconButton,
-  Badge,
-  Container,
-  styled,
-  createTheme,
-  ThemeProvider,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
-  FormHelperText,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import MenuIcon from "@mui/icons-material/Menu";
+import {
+  Badge,
+  Box,
+  Container,
+  CssBaseline,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Divider,
+  FormControl,
+  FormHelperText,
+  IconButton,
+  InputLabel,
+  List,
+  MenuItem,
+  AppBar as MuiAppBar,
+  Drawer as MuiDrawer,
+  Select,
+  ThemeProvider,
+  Toolbar,
+  createTheme,
+  styled,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Importações de Componentes
+import { AccountMenu } from "../components/AccountMenu";
+import { AlertDialog } from "../components/AlertDialog";
+import { ButtonCancel } from "../components/ButtonCancel";
+import { ButtonConfirm } from "../components/ButtonConfirm";
+import { ButtonCreateItem } from "../components/ButtonCreateItem";
+import { CircularProgressButtonStyled } from "../components/CircularProgressButtonStyled";
+import { CircularProgressListStyled } from "../components/CircularProgressListStyled";
+import { Company } from "../components/Company";
+import { Copyright } from "../components/Copyright";
+import { HeadingText } from "../components/HeadingText";
+import { InputText } from "../components/InputText";
+import { InputTextMultiline } from "../components/InputTextMultiline";
 import {
   mainListItems,
   secondaryListItems,
   tertiaryListItems,
 } from "../components/ListItems";
 import { PageTitle } from "../components/PageTitle";
-import { AccountMenu } from "../components/AccountMenu";
-import { AlertDialog } from "../components/AlertDialog";
-import { ButtonCreateItem } from "../components/ButtonCreateItem";
-import { HeadingText } from "../components/HeadingText";
-import { InputText } from "../components/InputText";
-import { InputTextMultiline } from "../components/InputTextMultiline";
-import { ButtonCancel } from "../components/ButtonCancel";
-import { ButtonConfirm } from "../components/ButtonConfirm";
-import { CircularProgressButtonStyled } from "../components/CircularProgressButtonStyled";
-import { CircularProgressListStyled } from "../components/CircularProgressListStyled";
 import { PaginationStyled } from "../components/PaginationStyled";
-import { Copyright } from "../components/Copyright";
-import { Company } from "../components/Company";
 
 // Importações de Serviços
 import {
-  getUserInformation,
-  isSystemCoordinator,
-  isPartnershipManager,
-} from "../utils/userUtils";
-import {
-  getCompanies,
   createCompany,
-  updateCompany,
   deleteCompany,
+  getCompanies,
+  updateCompany,
 } from "../services/companies";
 import { getAllConditions } from "../services/conditions";
+import {
+  getUserInformation,
+  isPartnershipManager,
+  isSystemCoordinator,
+} from "../utils/userUtils";
 
 const drawerWidth = 240;
 
