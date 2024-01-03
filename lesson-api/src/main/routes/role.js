@@ -1,14 +1,14 @@
-const { RoleController } = require("../../application/controllers/role");
+const { roleController } = require("../../application/controllers/role");
 
 /**
  * @param  {Router} router
  */
 const setupRoute = (router) => {
-  router.get("/roles", RoleController.findAll);
-  router.get("/roles/:id", RoleController.findOne);
-  router.post("/roles", RoleController.create);
-  router.put("/roles/:id", RoleController.update);
-  router.delete("/roles/:id", RoleController.destroy);
+  router.get("/roles", roleController.findAll);
+  router.get("/roles/:id", roleController.findOne);
+  router.post("/roles", roleController.create);
+  router.put("/roles/:id", roleController.update);
+  router.delete("/roles/:id", roleController.destroy);
 };
 
 module.exports = setupRoute;

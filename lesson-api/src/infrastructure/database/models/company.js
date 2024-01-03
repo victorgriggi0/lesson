@@ -57,8 +57,19 @@ const Company = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    createdAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn("NOW"),
+    },
+    updatedAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn("NOW"),
+    },
   },
-  { timestamps: true }
+  {
+    tableName: "companies",
+    underscored: true,
+  }
 );
 
 module.exports = { Company };

@@ -10,7 +10,7 @@ const env = {
   s3: {
     accessKey: process.env.AWS_S3_ACCESS_KEY_ID ?? "",
     secret: process.env.AWS_S3_SECRET_ACCESS_KEY ?? "",
-    bucket: process.env.AWS_S3_BUCKET ?? "",
+    bucket: process.env.AWS_S3_BUCKET_NAME ?? "",
   },
   appPort: process.env.PORT ?? 3333,
   jwt: {

@@ -10,11 +10,11 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
       },
-      firstName: {
+      first_name: {
         type: Sequelize.STRING(150),
         allowNull: false,
       },
-      lastName: {
+      last_name: {
         type: Sequelize.STRING(150),
         allowNull: false,
       },
@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      phoneNumber: {
+      phone_number: {
         type: Sequelize.STRING(150),
         allowNull: false,
       },
@@ -31,9 +31,17 @@ module.exports = {
         type: Sequelize.STRING(150),
         allowNull: false,
       },
-      roleId: {
+      role_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("NOW"),
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("NOW"),
       },
     });
   },

@@ -23,16 +23,16 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      phoneNumber: {
+      phone_number: {
         type: Sequelize.STRING(150),
         allowNull: false,
         unique: true,
       },
-      webSite: {
+      web_site: {
         type: Sequelize.STRING(150),
         allowNull: false,
       },
-      CEP: {
+      cep: {
         type: Sequelize.STRING(150),
         allowNull: false,
       },
@@ -52,9 +52,17 @@ module.exports = {
         type: Sequelize.STRING(150),
         allowNull: false,
       },
-      conditionId: {
+      condition_id: {
         type: Sequelize.STRING(150),
         allowNull: false,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("NOW"),
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("NOW"),
       },
     });
   },

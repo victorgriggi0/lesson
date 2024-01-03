@@ -1,8 +1,8 @@
-const { DataTypes, Sequelize } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 const { sequelize } = require("../sequelize");
 
-const User = sequelize.define(
-  "User",
+const File = sequelize.define(
+  "File",
   {
     id: {
       type: Sequelize.INTEGER,
@@ -10,29 +10,20 @@ const User = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    firstName: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastName: {
+    size: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    key: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    url: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    phoneNumber: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    roleId: {
-      type: Sequelize.INTEGER,
       allowNull: false,
     },
     createdAt: {
@@ -45,9 +36,9 @@ const User = sequelize.define(
     },
   },
   {
-    tableName: "users",
+    tableName: "files",
     underscored: true,
   }
 );
 
-module.exports = { User };
+module.exports = { File };

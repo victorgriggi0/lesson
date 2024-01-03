@@ -1,13 +1,26 @@
 const { request, response } = require("express");
 const { userRepository } = require("../../domain/repositories/user");
+const { HttpResponse } = require("../helpers/http");
 
-const UserController = {
+const userController = {
   /**
    * @param  {request} req
    * @param  {response} res
    */
   async findAll(req, res) {
-    res.status(200).json({ message: "ok" }).send();
+    const { page, pageSize } = req.query;
+
+    const httpResponse = HttpResponse(res);
+
+    const users = await userRepository.findAll(page, pageSize);
+
+    return httpResponse.ok({
+      results: users,
+      pagination: {
+        page,
+        pageSize,
+      },
+    });
   },
 
   /**
@@ -23,33 +36,44 @@ const UserController = {
   async create(req, res) {
     const payload = req.body;
 
+    const httpResponse = HttpResponse(res);
+
     const result = await userRepository.create({ ...payload });
 
-    console.log(result);
-
     if (!result.created)
-      return res
-        .status(400)
-        .json({ error: "ok", message: "cannot create a new user" })
-        .send();
+      return httpResponse.badRequest("Cannot create a new user");
 
-    res
-      .status(200)
-      .json({ ...result })
-      .send();
+    return httpResponse.ok({ ...result });
   },
 
   /**
    * @param  {request} req
    * @param  {response} res
    */
-  async update(req, res) {},
+  async update(req, res) {
+    const payload = req.body;
+    const { id } = req.params;
+
+    const httpResponse = HttpResponse(res);
+
+    const result = await userRepository.update(id, payload);
+
+    return httpResponse.ok({ ...result });
+  },
 
   /**
    * @param  {request} req
    * @param  {response} res
    */
-  async destroy(req, res) {},
+  async destroy(req, res) {
+    const { id } = req.params;
+
+    const httpResponse = HttpResponse(res);
+
+    const result = await userRepository.update(id, payload);
+
+    return httpResponse.ok({ ...result });
+  },
 };
 
-module.exports = { UserController };
+module.exports = { userController };

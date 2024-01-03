@@ -1,0 +1,23 @@
+### [create] Adiciona uma nova empresa na base de dados ###
+POST http://localhost:3333/v1/auth/sign-in HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+
+{
+  "email": "victor.silva@gmail.com",
+  "password": "vic.lva"
+}
+
+### [create] Adiciona uma nova empresa na base de dados ###
+POST http://localhost:3333/v1/auth/sign-up HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+
+{
+  "firstName": "Victor",
+  "lastName": "Silva",
+  "email": "victor.silva@gmail.com",
+  "phoneNumber": "+5561981786512",
+  "password": "vic.lva",
+  "roleId": 1
+}

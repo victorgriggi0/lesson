@@ -18,6 +18,18 @@ module.exports = {
         type: Sequelize.STRING(150),
         allowNull: false,
       },
+      permissions: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("NOW"),
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("NOW"),
+      },
     });
   },
 

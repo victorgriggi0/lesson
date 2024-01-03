@@ -1,4 +1,4 @@
-export class ServerError extends Error {
+class ServerError extends Error {
   constructor(error) {
     super("Server failed. Try again later");
     this.name = "ServerError";
@@ -6,16 +6,18 @@ export class ServerError extends Error {
   }
 }
 
-export class UnauthorizedError extends Error {
+class UnauthorizedError extends Error {
   constructor() {
     super("unauthorized");
     this.name = "UnauthorizedError";
   }
 }
 
-export class ForbiddenError extends Error {
+class ForbiddenError extends Error {
   constructor() {
     super("Access denied");
     this.name = "ForbiddenError";
   }
 }
+
+module.exports = { ServerError, UnauthorizedError, ForbiddenError };

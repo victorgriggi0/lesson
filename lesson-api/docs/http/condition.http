@@ -1,0 +1,29 @@
+### findAll - Retorna todos os registros de condições ###
+GET http://localhost:3333/v1/conditions HTTP/1.1
+User-Agent: rest-client
+
+### findOne - Retorna um condição em específico ###
+GET http://localhost:3333/v1/conditions/1234 HTTP/1.1
+User-Agent: rest-client
+
+### create - Adiciona um novo condição na base de dados ###
+POST http://localhost:3333/v1/conditions HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+
+{
+  "firstName": "Arthur",
+  "lastName": "Nivus",
+  "email": "arthur.nivus@demo.com",
+  "phoneNumber": "+5561996674523",
+  "password": "arthir.nivus",
+  "roleId": "1"
+}
+
+### update - Atualiza as informações de um condição já existente ###
+PATCH http://localhost:3333/v1/conditions/1234 HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+
+### destroy - Deleta da base de dados um condição previamente cadastrado ###
+DELETE http://localhost:3333/v1/conditions/1234 HTTP/1.1

@@ -1,26 +1,61 @@
-import { ForbiddenError, ServerError, UnauthorizedError } from "../erros";
+const { response } = require("express");
 
-export const ok = (data) => ({
-  statusCode: 200,
-  data,
-});
+/**
+ *
+ * @param {response} res
+ */
+const HttpResponse = (res) => {
+  const ok = (data) =>
+    res
+      .status(200)
+      .json({ ...data })
+      .send();
 
-export const badRequest = (error) => ({
-  statusCode: 400,
-  data: error,
-});
+  const created = (data) =>
+    res
+      .status(201)
+      .json({ ...data })
+      .send();
 
-export const unauthorized = () => ({
-  statusCode: 401,
-  data: new UnauthorizedError(),
-});
+  const badRequest = (message, error) =>
+    res
+      .status(400)
+      .json({ error: error ?? "bad_request", message })
+      .send();
 
-export const forbidden = () => ({
-  statusCode: 403,
-  data: new ForbiddenError(),
-});
+  const unauthorized = (message, error) =>
+    res
+      .status(401)
+      .json({ error: error ?? "unauthorized", message })
+      .send();
 
-export const serverError = (error) => ({
-  statusCode: 500,
-  data: new ServerError(error instanceof Error ? error : undefined),
-});
+  const notFound = (message, error) =>
+    res
+      .status(401)
+      .json({ error: error ?? "not_found", message })
+      .send();
+
+  const forbidden = (message, error) =>
+    res
+      .status(403)
+      .json({ error: error ?? "forbidden", message })
+      .send();
+
+  const serverError = (message, error) =>
+    res
+      .status(500)
+      .json({ error: error ?? "server_error", message })
+      .send();
+
+  return {
+    ok,
+    badRequest,
+    unauthorized,
+    forbidden,
+    serverError,
+    notFound,
+    created,
+  };
+};
+
+module.exports = { HttpResponse };

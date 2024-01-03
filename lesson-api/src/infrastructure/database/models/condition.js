@@ -19,6 +19,17 @@ export const Condition = sequelize.define(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    createdAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn("NOW"),
+    },
+    updatedAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn("NOW"),
+    },
   },
-  { timestamps: true }
+  {
+    tableName: "conditions",
+    underscored: true,
+  }
 );

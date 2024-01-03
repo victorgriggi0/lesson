@@ -1,9 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
-import { User } from "./user";
-
-const sequelize = new Sequelize(
-  "postgres://guest:guest@localhost:5432/dev_db@valedopacu"
-);
+const { User } = require("./user");
+const { sequelize } = require("../sequelize");
 
 const Role = sequelize.define(
   "Role",
@@ -22,13 +19,28 @@ const Role = sequelize.define(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    permissions: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    createdAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn("NOW"),
+    },
+    updatedAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn("NOW"),
+    },
   },
-  { timestamps: true }
+  {
+    tableName: "roles",
+    underscored: true,
+  }
 );
 
 Role.hasMany(User, {
   foreignKey: {
-    name: "roleId",
+    name: "role_id",
   },
 });
 

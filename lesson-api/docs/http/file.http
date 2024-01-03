@@ -1,0 +1,41 @@
+### findAll - Retorna todos os registros de usuários ###
+GET http://localhost:3333/v1/files HTTP/1.1
+User-Agent: rest-client
+
+### findOne - Retorna um usuário em específico ###
+GET http://localhost:3333/v1/users/1234 HTTP/1.1
+User-Agent: rest-client
+
+### create - Adiciona um novo usuário na base de dados ###
+POST http://localhost:3333/v1/users HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+
+{
+  "firstName": "Arthur",
+  "lastName": "Nivus",
+  "email": "arthur.nivus@demo.com",
+  "phoneNumber": "+5561996674523",
+  "password": "arthir.nivus",
+  "roleId": "1"
+}
+
+### update - Atualiza as informações de um usuário já existente ###
+PATCH http://localhost:3333/v1/users/1234 HTTP/1.1
+User-Agent: rest-client
+content-type: application/json
+
+### destroy - Deleta da base de dados um usuário previamente cadastrado ###
+DELETE http://localhost:3333/v1/users/1234 HTTP/1.1
+
+### upload ###
+
+POST http://localhost:3333/v1/files/upload HTTP/1.1
+Content-Type: multipart/form-data; boundary=MfnBoundry
+
+--MfnBoundry
+Content-Disposition: form-data; name="file"; filename="nodejs-logo.png"
+Content-Type: image/png
+
+< ./assets/nodejs-logo.png
+--MfnBoundry--
